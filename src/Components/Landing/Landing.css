@@ -1,0 +1,56 @@
+.landing {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.landing-link {
+    height: 200px;
+    width: 175px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    text-decoration: none;
+    background: #7371FC;
+    color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 10px;
+    box-shadow: 3px 3px 5px #7371FC;
+    overflow: hidden;
+}
+
+.bubble-style {
+    height: 85px;
+    width: 85px;
+    border-radius: 50%;
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    background: white;
+    opacity: .4;
+}
+
+.poke-image {
+    height: 115px;
+    position: relative;
+    z-index: 2;
+}
+
+.landing-link p {
+    margin: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.pokeball-icon {
+    height: 125px;
+    position: absolute;
+    bottom: -25px;
+    right: -25px;
+    opacity: .5;
+}

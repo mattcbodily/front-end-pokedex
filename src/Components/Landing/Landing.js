@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import pokeball from '../../assets/pokeball.svg';
+import './Landing.css';
 
 export default props => {
     let [pokemonArr, setPokemonArr] = useState([]);
@@ -24,13 +26,13 @@ export default props => {
     }, [])
 
     return (
-        <div>
+        <div className='landing'>
             {pokemonArr.map((pokemon, i) => (
-                <Link to={`/pokemon/${pokemon.id}`} key={i}>
-                    <div>
-                        <img src={pokemon.image} alt={pokemon.name}/>
-                        <p>{pokemon.name}</p>
-                    </div>
+                <Link to={`/pokemon/${pokemon.id}`} key={i} className='landing-link'>
+                    <div className='bubble-style'></div>
+                    <img src={pokemon.image} alt={pokemon.name} className='poke-image'/>
+                    <p>{pokemon.name}</p>
+                    <img src={pokeball} alt='pokeball' className='pokeball-icon'/>
                 </Link>
             ))}
         </div>
