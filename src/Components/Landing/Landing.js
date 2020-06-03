@@ -13,7 +13,7 @@ export default props => {
               data = res.data.results;
 
         const pokeList = data.map((e, i) => ({
-            name: e.name,
+            name: e.name.charAt(0).toUpperCase() + e.name.slice(1),
             id: i + 1,
             image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i + 1}.png`
         }))
