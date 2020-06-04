@@ -31,7 +31,13 @@
     top: -25px;
     left: -25px;
     background: white;
-    opacity: .4;
+    opacity: .3;
+}
+
+.poke-number {
+    position: absolute;
+    top: 5px;
+    right: 10px;
 }
 
 .poke-image {
@@ -52,5 +58,5 @@
     position: absolute;
     bottom: -25px;
     right: -25px;
-    opacity: .5;
+    opacity: .4;
 }

@@ -30,6 +30,7 @@ export default props => {
             {pokemonArr.map((pokemon, i) => (
                 <Link to={`/pokemon/${pokemon.id}`} key={i} className='landing-link'>
                     <div className='bubble-style'></div>
+                    <p className='poke-number'>#{pokemon.id}</p>
                     <img src={pokemon.image} alt={pokemon.name} className='poke-image'/>
                     <p>{pokemon.name}</p>
                     <img src={pokeball} alt='pokeball' className='pokeball-icon'/>
