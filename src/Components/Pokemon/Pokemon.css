@@ -1,0 +1,15 @@
+.pokemon {
+    min-height: 100vh;
+    position: relative;
+    background: #7371FC;
+    color: white;
+}
+
+.poke-info {
+    height: 50vh;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    background: snow;
+    border-radius: 25px 25px 0px 0px;
+}

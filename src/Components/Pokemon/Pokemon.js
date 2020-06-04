@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import Header from '../Header/Header';
+import './Pokemon.css';
 
 export default props => {
     let [pokemon, setPokemon] = useState({});
@@ -16,9 +18,14 @@ export default props => {
     }, [])
 
     return (
-        <div>
+        <div className='pokemon'>
+            <Header />
             <img src={pokemon.sprites?.front_default} alt={pokemon.name}/>
             <p>{pokemon.name}</p>
+            <p>#{pokemon.id}</p>
+            <div className='poke-info'>
+
+            </div>
         </div>
     )
 }

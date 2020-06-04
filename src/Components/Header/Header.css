@@ -1,0 +1,6 @@
+.header-flex {
+    height: 40px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    display: flex;
+}
