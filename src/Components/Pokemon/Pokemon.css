@@ -2,14 +2,34 @@
     min-height: 100vh;
     position: relative;
     background: #7371FC;
-    color: white;
+    color: black;
 }
 
 .poke-info {
     height: 50vh;
     width: 100%;
+    box-sizing: border-box;
+    padding-top: 25px;
     position: absolute;
     bottom: 0px;
     background: snow;
     border-radius: 25px 25px 0px 0px;
+}
+
+.link-flex {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.about-links {
+    text-decoration: none;
+    color: lightgray;
+    line-height: 30px;
+    font-weight: 600;
+}
+
+.active-link {
+    color: black;
+    border-bottom: 3px solid #77BEF9;
 }
