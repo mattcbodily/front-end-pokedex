@@ -5,8 +5,8 @@
 }
 
 .landing-link {
-    height: 200px;
-    width: 175px;
+    height: 160px;
+    width: 150px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@
     color: white;
     border: 1px solid black;
     border-radius: 15px;
-    margin: 10px;
+    margin: 7px;
     box-shadow: 3px 3px 5px #7371FC;
     overflow: hidden;
 }
@@ -28,8 +28,8 @@
     width: 85px;
     border-radius: 50%;
     position: absolute;
-    top: -25px;
-    left: -25px;
+    top: -30px;
+    left: -30px;
     background: white;
     opacity: .3;
 }
@@ -41,7 +41,7 @@
 }
 
 .poke-image {
-    height: 115px;
+    height: 100px;
     position: relative;
     z-index: 2;
 }
@@ -54,9 +54,9 @@
 }
 
 .pokeball-icon {
-    height: 125px;
+    height: 110px;
     position: absolute;
     bottom: -25px;
-    right: -25px;
+    right: -20px;
     opacity: .4;
 }
