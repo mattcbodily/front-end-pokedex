@@ -7,10 +7,13 @@ export default props => {
 
     const getEvolutionChain = async() => {
         const {id} = props.match.params,
-              pokeSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
+              pokeSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`),
+              spriteObj = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
 
         let chain = await axios.get(pokeSpecies.data.evolution_chain.url),
             chainData = [];
+
+        chainData.push(spriteObj.data);
 
         if(props.name === 'Eevee'){
             for(let i = 0; i <= 2; i++){
