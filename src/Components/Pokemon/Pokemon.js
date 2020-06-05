@@ -11,11 +11,13 @@ import './Pokemon.css';
 export default props => {
     let [pokemon, setPokemon] = useState({});
 
-    const getPokemon = () => {
+    const getPokemon = async() => {
         const {id} = props.match.params;
-        axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-        .then(res => setPokemon(res.data))
-        .catch(err => console.log(err));
+
+        let pokeObj = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        pokeObj.data.name = pokeObj.data.name.charAt(0).toUpperCase() + pokeObj.data.name.slice(1);
+
+        setPokemon(pokeObj.data);
     }
 
     useEffect(() => {
@@ -36,7 +38,7 @@ export default props => {
                     <Link to={`/pokemon/${pokemon.id}/moves`} className={`about-links ${props.location.pathname.includes('moves') ? 'active-link' : null}`}>Moves</Link>
                 </nav>
                 <Switch>
-                <Route exact path='/pokemon/:id' component={About}/>
+                <Route exact path='/pokemon/:id' render={() => <About {...props} height={pokemon.height} weight={pokemon.weight}/>}/>
                 <Route path='/pokemon/:id/stats' component={Stats}/>
                 <Route path='/pokemon/:id/evolution' component={Evolution}/>
                 <Route path='/pokemon/:id/moves' component={Moves}/>
