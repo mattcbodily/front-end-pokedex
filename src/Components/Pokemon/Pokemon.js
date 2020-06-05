@@ -24,6 +24,8 @@ export default props => {
         getPokemon();
     }, [])
 
+    console.log(pokemon)
+
     return (
         <div className='pokemon'>
             <Header />
@@ -41,7 +43,7 @@ export default props => {
                 <Route exact path='/pokemon/:id' render={() => <About {...props} height={pokemon.height} weight={pokemon.weight}/>}/>
                 <Route path='/pokemon/:id/stats' render={() => <Stats {...props} statsArr={pokemon.stats}/>}/>
                 <Route path='/pokemon/:id/evolution' component={Evolution}/>
-                <Route path='/pokemon/:id/moves' component={Moves}/>
+                <Route path='/pokemon/:id/moves' render={() => <Moves {...props} moves={pokemon.moves}/>}/>
                 </Switch>
             </div>
         </div>
