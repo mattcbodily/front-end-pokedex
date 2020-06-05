@@ -5,9 +5,14 @@ export default BaseComponent => {
         const capitalizeFirst = (str) => {
             return str.charAt(0).toUpperCase() + str.slice(1);
         }
+
+        const removeHyphen = (str) => {
+            return str.split('-').map(e => e.charAt(0).toUpperCase() + e.slice(1)).join(' ');
+        }
     
         const strWorksObj = {
-            capitalizeFirst
+            capitalizeFirst,
+            removeHyphen
         }
     
         return <BaseComponent {...props} strWorks={strWorksObj}/>

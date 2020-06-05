@@ -1,17 +1,23 @@
 import React, {useState, useEffect} from 'react';
+import stringWorks from '../../../HOCs/stringWorks';
 import './Moves.css';
 
-export default props => {
-    let [levelMoves, setLevelMoves] = useState([]),
-        [machineMoves, setMachineMoves] = useState([]);
-    console.log(props)
+const Moves = props => {
+    let [levelMoves, setLevelMoves] = useState([]);
 
     const sortMoves = () => {
-        let levelArr = props.moves?.filter(move => move.version_group_details[0].move_learn_method.name === 'level-up'),
-            machineArr = props.moves?.filter(move => move.version_group_details[0].move_learn_method.name === 'machine');
+        let levelArr = props.moves?.filter(move => move.version_group_details[0].move_learn_method.name === 'level-up')
+                                   .map(e => {
+                                       return {
+                                           name: props.strWorks.removeHyphen(e.move.name),
+                                           level: e.version_group_details[0].level_learned_at
+                                       }
+                                   })
+                                   .sort((a, b) => {
+                                       return a.level - b.level
+                                   });
 
         setLevelMoves(levelArr);
-        setMachineMoves(machineArr);
     }
 
     useEffect(() => {
@@ -20,14 +26,14 @@ export default props => {
 
     return (
         <div>
-            <p>Learned By Level</p>
             {levelMoves?.map((move, i) => (
-                <p key={i}>{move.move.name}</p>
-            ))}
-            <p>Learned by TM/HM</p>
-            {machineMoves?.map((move, i) => (
-                <p key={i}>{move.move.name}</p>
+                <div key={i}>
+                    <p>{move.name}</p>
+                    <p>Lvl {move.level}</p>
+                </div>
             ))}
         </div>
     )
 }
+
+export default stringWorks(Moves);
