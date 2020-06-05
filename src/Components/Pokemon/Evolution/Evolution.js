@@ -5,21 +5,14 @@ import './Evolution.css';
 export default props => {
     let [evolutionChain, setEvolutionChain] = useState([]);
 
-    console.log(props)
-
     const getEvolutionChain = async() => {
         const {id} = props.match.params,
               pokeSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
 
-        let chain = await axios.get(pokeSpecies.data.evolution_chain.url);
-
-        console.log(pokeSpecies)
-        console.log(chain.data.chain)
-
-        let chainData = [];
+        let chain = await axios.get(pokeSpecies.data.evolution_chain.url),
+            chainData = [];
 
         if(props.name === 'Eevee'){
-            console.log('hit')
             for(let i = 0; i <= 2; i++){
                 let splitStr = chain.data.chain.evolves_to[i].species.url.split('/'),
                     pokeId = splitStr[splitStr.length - 2];
@@ -27,9 +20,19 @@ export default props => {
                 chainData.push(species.data)
             }
         } else if(chain.data.chain.evolves_to.length){
-            
-        } else {
+            const {evolves_to} = chain.data.chain;
+            let splitStr = evolves_to[0].species.url.split('/'),
+                pokeId = splitStr[splitStr.length - 2],
+                species = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeId}`);
+                
+            chainData.push(species.data);
+            if(evolves_to[0].evolves_to.length){
+                let splitStrTwo = evolves_to[0].evolves_to[0].species.url.split('/'),
+                    pokeIdTwo = splitStrTwo[splitStrTwo.length - 2],
+                    speciesTwo = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeIdTwo}`);
 
+                chainData.push(speciesTwo.data)
+            }
         }
         setEvolutionChain(chainData)
     }
@@ -41,8 +44,8 @@ export default props => {
     return (
         <div>
             {evolutionChain.map((pokemon, i) => (
-                <div>
-                    <img key={i} src={pokemon.sprites.front_default} alt={pokemon.name}/>
+                <div key={i}>
+                    <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
                     <p>{pokemon.name}</p>
                 </div>
             ))}
