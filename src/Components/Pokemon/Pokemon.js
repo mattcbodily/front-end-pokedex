@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Switch, Route, Link} from 'react-router-dom';
 import axios from 'axios';
+import stringWorks from '../../HOCs/stringWorks';
 import Header from '../Header/Header';
 import About from './About/About';
 import Stats from './Stats/Stats';
@@ -8,14 +9,14 @@ import Evolution from './Evolution/Evolution';
 import Moves from './Moves/Moves';
 import './Pokemon.css';
 
-export default props => {
+const Pokemon = props => {
     let [pokemon, setPokemon] = useState({});
 
     const getPokemon = async() => {
         const {id} = props.match.params;
 
         let pokeObj = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-        pokeObj.data.name = pokeObj.data.name.charAt(0).toUpperCase() + pokeObj.data.name.slice(1);
+        pokeObj.data.name = props.strWorks.capitalizeFirst(pokeObj.data.name);
 
         setPokemon(pokeObj.data);
     }
@@ -47,3 +48,5 @@ export default props => {
         </div>
     )
 }
+
+export default stringWorks(Pokemon);

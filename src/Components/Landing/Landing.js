@@ -26,8 +26,6 @@ const Landing = props => {
         getAllPokemon()
     }, [])
 
-    console.log(props)
-
     return (
         <div className='landing'>
             {pokemonArr.map((pokemon, i) => (
