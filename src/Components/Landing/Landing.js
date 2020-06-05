@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import stringWorks from '../../HOCs/stringWorks';
 import pokeball from '../../assets/pokeball.svg';
 import './Landing.css';
 
-export default props => {
+const Landing = props => {
     let [pokemonArr, setPokemonArr] = useState([]);
 
     const getAllPokemon = async() => {
@@ -13,7 +14,7 @@ export default props => {
               data = res.data.results;
 
         const pokeList = data.map((e, i) => ({
-            name: e.name.charAt(0).toUpperCase() + e.name.slice(1),
+            name: props.strWorks.capitalizeFirst(e.name),
             id: i + 1,
             image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i + 1}.png`
         }))
@@ -24,6 +25,8 @@ export default props => {
     useEffect(() => {
         getAllPokemon()
     }, [])
+
+    console.log(props)
 
     return (
         <div className='landing'>
@@ -39,3 +42,5 @@ export default props => {
         </div>
     )
 }
+
+export default stringWorks(Landing);
