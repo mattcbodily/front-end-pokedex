@@ -1,19 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import stringWorks from '../../../HOCs/stringWorks';
 import './Evolution.css';
 
-export default props => {
+const Evolution = props => {
     let [evolutionChain, setEvolutionChain] = useState([]);
 
     const getEvolutionChain = async() => {
         const {id} = props.match.params,
-              pokeSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+              pokeSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
 
         let chain = await axios.get(pokeSpecies.data.evolution_chain.url),
             chainData = [],
             speciesSplit = chain.data.chain.species.url.split('/'),
             firstPokemonId = speciesSplit[speciesSplit.length - 2],
             firstPokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${firstPokemonId}`);
+
+        firstPokemon.data.name = props.strWorks.capitalizeFirst(firstPokemon.data.name);
 
         chainData.push(firstPokemon.data);
 
@@ -26,7 +29,8 @@ export default props => {
                     pokeId = splitStr[splitStr.length - 2],
                     species = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeId}`);
 
-                species.data.evolution = evolution_details[0].item.name;
+                species.data.name = props.strWorks.capitalizeFirst(species.data.name);
+                species.data.evolution = props.strWorks.removeHyphen(evolution_details[0].item.name);
                 chainData.push(species.data)
             }
         } else if(chain.data.chain.evolves_to.length){
@@ -36,6 +40,8 @@ export default props => {
             let splitStr = evolves_to[0].species.url.split('/'),
                 pokeId = splitStr[splitStr.length - 2],
                 species = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeId}`);
+
+            species.data.name = props.strWorks.capitalizeFirst(species.data.name);
 
             if(evolution_details[0].trigger.name === 'level-up'){
                 species.data.evolution = `Lvl ${evolution_details[0].min_level}`;
@@ -48,6 +54,8 @@ export default props => {
                 let splitStrTwo = evolves_to[0].evolves_to[0].species.url.split('/'),
                     pokeIdTwo = splitStrTwo[splitStrTwo.length - 2],
                     speciesTwo = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeIdTwo}`);
+
+                    speciesTwo.data.name = props.strWorks.capitalizeFirst(speciesTwo.data.name);
 
                     if(evolves_to[0].evolves_to[0].evolution_details[0].trigger.name === 'level-up'){
                         speciesTwo.data.evolution = `Lvl ${evolves_to[0].evolves_to[0].evolution_details[0].min_level}`;
@@ -77,3 +85,5 @@ export default props => {
         </div>
     )
 }
+
+export default stringWorks(Evolution);
