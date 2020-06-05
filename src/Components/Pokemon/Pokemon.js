@@ -39,7 +39,7 @@ export default props => {
                 </nav>
                 <Switch>
                 <Route exact path='/pokemon/:id' render={() => <About {...props} height={pokemon.height} weight={pokemon.weight}/>}/>
-                <Route path='/pokemon/:id/stats' component={Stats}/>
+                <Route path='/pokemon/:id/stats' render={() => <Stats {...props} statsArr={pokemon.stats}/>}/>
                 <Route path='/pokemon/:id/evolution' component={Evolution}/>
                 <Route path='/pokemon/:id/moves' component={Moves}/>
                 </Switch>
