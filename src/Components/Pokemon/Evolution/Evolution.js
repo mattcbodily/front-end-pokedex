@@ -30,7 +30,7 @@ export default props => {
         } else if(chain.data.chain.evolves_to.length){
             const {evolves_to} = chain.data.chain,
                   {evolution_details} = evolves_to[0];
-            console.log(evolution_details[0]);
+
             let splitStr = evolves_to[0].species.url.split('/'),
                 pokeId = splitStr[splitStr.length - 2],
                 species = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeId}`);
