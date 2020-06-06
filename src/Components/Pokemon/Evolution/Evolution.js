@@ -11,14 +11,16 @@ const Evolution = props => {
               pokeSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
 
         let chain = await axios.get(pokeSpecies.data.evolution_chain.url),
-            chainData = [],
-            speciesSplit = chain.data.chain.species.url.split('/'),
+            chainData = [];
+            
+        if(props.name !== 'Pikachu' && props.name !== 'Raichu' && props.name !== 'Clefairy' && props.name !== 'Clefable' && props.name !== 'Jigglypuff' && props.name !== 'Wigglytuff' && props.name !== 'Electabuzz' && props.name !== 'Magmar'){
+            let speciesSplit = chain.data.chain.species.url.split('/'),
             firstPokemonId = speciesSplit[speciesSplit.length - 2],
             firstPokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${firstPokemonId}`);
 
-        firstPokemon.data.name = props.strWorks.capitalizeFirst(firstPokemon.data.name);
-
-        chainData.push(firstPokemon.data);
+            firstPokemon.data.name = props.strWorks.capitalizeFirst(firstPokemon.data.name);
+            chainData.push(firstPokemon.data);
+        }
 
         if(props.name === 'Eevee'){
             const {evolves_to} = chain.data.chain;
@@ -43,6 +45,8 @@ const Evolution = props => {
 
             species.data.name = props.strWorks.capitalizeFirst(species.data.name);
 
+            console.log(evolution_details)
+
             if(evolution_details[0].trigger.name === 'level-up'){
                 species.data.evolution = `Lvl ${evolution_details[0].min_level}`;
             } else if(evolution_details[0].trigger.name === 'use-item'){
@@ -57,6 +61,8 @@ const Evolution = props => {
 
                     speciesTwo.data.name = props.strWorks.capitalizeFirst(speciesTwo.data.name);
 
+                    console.log(evolution_details)
+
                     if(evolves_to[0].evolves_to[0].evolution_details[0].trigger.name === 'level-up'){
                         speciesTwo.data.evolution = `Lvl ${evolves_to[0].evolves_to[0].evolution_details[0].min_level}`;
                     }
@@ -68,7 +74,9 @@ const Evolution = props => {
     }
 
     useEffect(() => {
-        getEvolutionChain();
+        if(props.name){
+            getEvolutionChain();
+        }
     }, [props.name])
 
     return (

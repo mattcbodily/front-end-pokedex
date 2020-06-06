@@ -39,10 +39,10 @@ const Pokemon = props => {
                     <Link to={`/pokemon/${pokemon.id}/moves`} className={`about-links ${props.location.pathname.includes('moves') ? 'active-link' : null}`}>Moves</Link>
                 </nav>
                 <Switch>
-                <Route exact path='/pokemon/:id' render={() => <About {...props} height={pokemon.height} weight={pokemon.weight}/>}/>
-                <Route path='/pokemon/:id/stats' render={() => <Stats {...props} statsArr={pokemon.stats}/>}/>
-                <Route path='/pokemon/:id/evolution' render={() => <Evolution {...props} name={pokemon.name}/>}/>
-                <Route path='/pokemon/:id/moves' render={() => <Moves {...props} moves={pokemon.moves}/>}/>
+                    <Route exact path='/pokemon/:id' render={() => <About {...props} height={pokemon.height} weight={pokemon.weight}/>}/>
+                    <Route path='/pokemon/:id/stats' render={() => <Stats {...props} statsArr={pokemon.stats}/>}/>
+                    <Route path='/pokemon/:id/evolution' render={() => <Evolution {...props} name={pokemon.name}/>}/>
+                    <Route path='/pokemon/:id/moves' render={() => <Moves {...props} moves={pokemon.moves}/>}/>
                 </Switch>
             </div>
         </div>
