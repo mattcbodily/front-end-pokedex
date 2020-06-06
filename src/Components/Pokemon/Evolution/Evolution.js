@@ -47,9 +47,9 @@ const Evolution = props => {
 
             console.log(evolution_details)
 
-            if(evolution_details[0].trigger.name === 'level-up'){
+            if(evolves_to[0].evolution_details[0].trigger.name === 'level-up'){
                 species.data.evolution = `Lvl ${evolution_details[0].min_level}`;
-            } else if(evolution_details[0].trigger.name === 'use-item'){
+            } else if(evolves_to[0].evolution_details[0].trigger.name === 'use-item'){
                 species.data.evolution = evolution_details[0].item.name;
             }
                 
@@ -61,10 +61,12 @@ const Evolution = props => {
 
                     speciesTwo.data.name = props.strWorks.capitalizeFirst(speciesTwo.data.name);
 
-                    console.log(evolution_details)
+                    console.log(evolves_to)
 
                     if(evolves_to[0].evolves_to[0].evolution_details[0].trigger.name === 'level-up'){
                         speciesTwo.data.evolution = `Lvl ${evolves_to[0].evolves_to[0].evolution_details[0].min_level}`;
+                    } else if(evolves_to[0].evolves_to[0].evolution_details[0].trigger.name === 'use-item'){
+                        species.data.evolution = evolves_to[0].evolves_to[0].evolution_details[0].item.name;
                     }
 
                 chainData.push(speciesTwo.data)
