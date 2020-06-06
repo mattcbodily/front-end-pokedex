@@ -8,7 +8,20 @@ const Stats = props => {
     const formatStrings = () => {
         let format = props.statsArr.map((stat) => {
             if(stat.stat.name === 'hp'){
-                stat.stat.name = stat.stat.name.toUpperCase();
+                return {
+                    name: stat.stat.name.toUpperCase(),
+                    stat: stat.base_stat
+                }
+            } else if(stat.stat.name === 'special-attack' || stat.stat.name === 'special-defense'){
+                return {
+                    name: props.strWorks.removeHyphen(stat.stat.name),
+                    stat: stat.base_stat
+                }
+            } else {
+                return {
+                    name: props.strWorks.capitalizeFirst(stat.stat.name),
+                    stat: stat.base_stat
+                }
             }
         })
 
@@ -21,14 +34,12 @@ const Stats = props => {
         }
     }, [props])
 
-    console.log(formattedStats)
-
     return (
         <div>
-            {props.statsArr?.map((stat, i) => (
+            {formattedStats?.map((stat, i) => (
                 <section key={i}>
-                    <p>{stat.stat.name}</p>
-                    <p>{stat.base_stat}</p>
+                    <p>{stat.name}</p>
+                    <p>{stat.stat}</p>
                 </section>
             ))}
         </div>
