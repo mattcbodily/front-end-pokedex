@@ -1,0 +1,6 @@
+.stat-container {
+    box-sizing: border-box;
+    padding: 0px 30px;
+    display: flex;
+    justify-content: space-between;
+}

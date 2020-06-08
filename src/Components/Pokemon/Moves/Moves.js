@@ -27,7 +27,7 @@ const Moves = props => {
     return (
         <div>
             {levelMoves?.map((move, i) => (
-                <div key={i}>
+                <div key={i} className='move-container'>
                     <p>{move.name}</p>
                     <p>Lvl {move.level}</p>
                 </div>

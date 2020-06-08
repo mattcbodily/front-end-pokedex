@@ -35,9 +35,9 @@ const Stats = props => {
     }, [props])
 
     return (
-        <div>
+        <div className='stats'>
             {formattedStats?.map((stat, i) => (
-                <section key={i}>
+                <section key={i} className='stat-container'>
                     <p>{stat.name}</p>
                     <p>{stat.stat}</p>
                 </section>
