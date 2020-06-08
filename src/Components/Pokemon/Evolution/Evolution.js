@@ -8,12 +8,14 @@ const Evolution = props => {
 
     const getEvolutionChain = async() => {
         const {id} = props.match.params,
+              preEvolutions = ['Pikachu', 'Raichu', 'Clefairy', 'Clefable', 'Jigglypuff', 'Wigglytuff', 'Electabuzz', 'Magmar', 'Hitmonchan', 'Hitmonlee'],
+              postEvolutions = ['Lickitung', 'Scyther', 'Onix', 'Magmar', 'Electabuzz', 'Tangela', 'Magnemite', 'Magneton', 'Horsea', 'Seadra'],
               pokeSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
 
         let chain = await axios.get(pokeSpecies.data.evolution_chain.url),
             chainData = [];
             
-        if(props.name !== 'Pikachu' && props.name !== 'Raichu' && props.name !== 'Clefairy' && props.name !== 'Clefable' && props.name !== 'Jigglypuff' && props.name !== 'Wigglytuff' && props.name !== 'Electabuzz' && props.name !== 'Magmar' && props.name !== 'Hitmonchan' && props.name !== 'Hitmonlee'){
+        if(!preEvolutions.includes(props.name)){
             let speciesSplit = chain.data.chain.species.url.split('/'),
             firstPokemonId = speciesSplit[speciesSplit.length - 2],
             firstPokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${firstPokemonId}`);
@@ -35,7 +37,7 @@ const Evolution = props => {
                 species.data.evolution = props.strWorks.removeHyphen(evolution_details[0].item.name);
                 chainData.push(species.data)
             }
-        } else if(chain.data.chain.evolves_to.length && props.name !== 'Lickitung' && props.name !== 'Scyther' && props.name !== 'Magmar' && props.name !== 'Electabuzz' && props.name !== 'Onix' && props.name !== 'Magnemite' && props.name !== 'Magneton' && props.name !== 'Chansey' && props.name !== 'Tangela' && props.name !== 'Horsea' && props.name !== 'Seadra'){
+        } else if(chain.data.chain.evolves_to.length && !postEvolutions.includes(props.name)){
             const {evolves_to} = chain.data.chain,
                   {evolution_details} = evolves_to[0];
 
