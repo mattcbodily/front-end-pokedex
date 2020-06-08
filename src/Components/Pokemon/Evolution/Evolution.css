@@ -1,0 +1,19 @@
+.evolution {
+    max-height: calc(50vh - 50px);
+    box-sizing: border-box;
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow-y: scroll;
+}
+
+.evolution img {
+    width: 130px;
+}
+
+.evolution p {
+    margin: 0px;
+    font-size: 18px;
+    line-height: 22px;
+}

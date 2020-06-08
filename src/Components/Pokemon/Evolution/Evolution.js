@@ -84,7 +84,7 @@ const Evolution = props => {
     }, [props.name])
 
     return (
-        <div>
+        <div className='evolution'>
             {evolutionChain.map((pokemon, i) => (
                 <div key={i}>
                     <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
