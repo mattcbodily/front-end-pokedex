@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import stringWorks from '../../../HOCs/stringWorks';
+import evolutionArrow from '../../../assets/evolution_arrow.svg';
 import './Evolution.css';
 
 const Evolution = props => {
@@ -85,12 +86,15 @@ const Evolution = props => {
 
     return (
         <div className='evolution'>
-            {evolutionChain.map((pokemon, i) => (
-                <div key={i}>
+            {evolutionChain.map((pokemon, i, arr) => (
+                <div key={i} className='poke-evolution'>
                     <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
                     <p>{pokemon.name}</p>
                     {pokemon.evolution
                     ? <p>{pokemon.evolution}</p>
+                    : null}
+                    {i < arr.length - 1
+                    ? <img src={evolutionArrow} alt='Arrow' className='evolution-arrow'/>
                     : null}
                 </div>
             ))}

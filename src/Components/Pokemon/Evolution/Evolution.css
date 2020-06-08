@@ -7,6 +7,11 @@
     align-items: baseline;
 }
 
+.poke-evolution {
+    height: 200px;
+    position: relative;
+}
+
 .evolution img {
     width: 105px;
 }
@@ -15,4 +20,11 @@
     margin: 0px;
     font-size: 18px;
     line-height: 24px;
+}
+
+.evolution-arrow {
+    height: 15px;
+    position: absolute;
+    top: 40%;
+    right: -50px;
 }
