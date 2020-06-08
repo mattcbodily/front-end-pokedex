@@ -66,8 +66,7 @@
 }
 
 .poke-info {
-    min-height: 50vh;
-    max-height: 50vh;
+    height: 50vh;
     width: 100%;
     box-sizing: border-box;
     padding-top: 25px;
