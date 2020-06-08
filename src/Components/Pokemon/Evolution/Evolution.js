@@ -35,7 +35,7 @@ const Evolution = props => {
                 species.data.evolution = props.strWorks.removeHyphen(evolution_details[0].item.name);
                 chainData.push(species.data)
             }
-        } else if(chain.data.chain.evolves_to.length && props.name !== 'Lickitung' && props.name !== 'Scyther' && props.name !== 'Magmar' && props.name !== 'Electabuzz' && props.name !== 'Onix'){
+        } else if(chain.data.chain.evolves_to.length && props.name !== 'Lickitung' && props.name !== 'Scyther' && props.name !== 'Magmar' && props.name !== 'Electabuzz' && props.name !== 'Onix' && props.name !== 'Magnemite' && props.name !== 'Magneton' && props.name !== 'Chansey' && props.name !== 'Tangela' && props.name !== 'Horsea' && props.name !== 'Seadra'){
             const {evolves_to} = chain.data.chain,
                   {evolution_details} = evolves_to[0];
 
@@ -45,13 +45,12 @@ const Evolution = props => {
 
             species.data.name = props.strWorks.capitalizeFirst(species.data.name);
 
-            console.log(evolves_to)
-            console.log(evolution_details)
-
-            if(evolution_details[0].trigger.name === 'level-up'){
+            if(evolution_details[0].trigger.name === 'level-up' && props.name !== 'Pikachu' && props.name !== 'Clefairy' && props.name !== 'Jigglypuff'){
                 species.data.evolution = `Lvl ${evolution_details[0].min_level}`;
             } else if(evolution_details[0].trigger.name === 'use-item'){
                 species.data.evolution = evolution_details[0].item.name;
+            } else if(evolution_details[0].trigger.name === 'trade'){
+                species.data.evolution = 'Trade'
             }
                 
             chainData.push(species.data);
@@ -62,12 +61,12 @@ const Evolution = props => {
 
                     speciesTwo.data.name = props.strWorks.capitalizeFirst(speciesTwo.data.name);
 
-                    console.log(evolves_to)
-
                     if(evolves_to[0].evolves_to[0].evolution_details[0].trigger.name === 'level-up'){
                         speciesTwo.data.evolution = `Lvl ${evolves_to[0].evolves_to[0].evolution_details[0].min_level}`;
                     } else if(evolves_to[0].evolves_to[0].evolution_details[0].trigger.name === 'use-item'){
-                        species.data.evolution = evolves_to[0].evolves_to[0].evolution_details[0].item.name;
+                        speciesTwo.data.evolution = evolves_to[0].evolves_to[0].evolution_details[0].item.name;
+                    } else if(evolves_to[0].evolves_to[0].evolution_details[0].trigger.name === 'trade'){
+                        speciesTwo.data.evolution = 'Trade'
                     }
 
                 chainData.push(speciesTwo.data)
