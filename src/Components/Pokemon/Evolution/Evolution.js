@@ -48,7 +48,7 @@ const Evolution = props => {
             if(evolution_details[0].trigger.name === 'level-up' && props.name !== 'Pikachu' && props.name !== 'Clefairy' && props.name !== 'Jigglypuff'){
                 species.data.evolution = `Lvl ${evolution_details[0].min_level}`;
             } else if(evolution_details[0].trigger.name === 'use-item'){
-                species.data.evolution = evolution_details[0].item.name;
+                species.data.evolution = props.strWorks.removeHyphen(evolution_details[0].item.name);
             } else if(evolution_details[0].trigger.name === 'trade'){
                 species.data.evolution = 'Trade'
             }
@@ -64,7 +64,7 @@ const Evolution = props => {
                     if(evolves_to[0].evolves_to[0].evolution_details[0].trigger.name === 'level-up'){
                         speciesTwo.data.evolution = `Lvl ${evolves_to[0].evolves_to[0].evolution_details[0].min_level}`;
                     } else if(evolves_to[0].evolves_to[0].evolution_details[0].trigger.name === 'use-item'){
-                        speciesTwo.data.evolution = evolves_to[0].evolves_to[0].evolution_details[0].item.name;
+                        speciesTwo.data.evolution = props.strWorks.removeHyphen(evolves_to[0].evolves_to[0].evolution_details[0].item.name);
                     } else if(evolves_to[0].evolves_to[0].evolution_details[0].trigger.name === 'trade'){
                         speciesTwo.data.evolution = 'Trade'
                     }
