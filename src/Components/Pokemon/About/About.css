@@ -1,5 +1,8 @@
 .about {
+    height: calc(50vh - 75px);
     padding: 0px 3%;
+    display: flex;
+    flex-direction: column;
 }
 
 .about p {

@@ -1,6 +1,14 @@
+.stats {
+    max-height: calc(50vh - 75px);
+    box-sizing: border-box;
+    padding: 0px 10px;
+    overflow-y: scroll;   
+}
+
 .stat-container {
     box-sizing: border-box;
-    padding: 0px 30px;
+    padding: 0px 15px;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid lightgray;
 }
