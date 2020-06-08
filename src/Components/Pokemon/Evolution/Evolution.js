@@ -13,7 +13,7 @@ const Evolution = props => {
         let chain = await axios.get(pokeSpecies.data.evolution_chain.url),
             chainData = [];
             
-        if(props.name !== 'Pikachu' && props.name !== 'Raichu' && props.name !== 'Clefairy' && props.name !== 'Clefable' && props.name !== 'Jigglypuff' && props.name !== 'Wigglytuff' && props.name !== 'Electabuzz' && props.name !== 'Magmar'){
+        if(props.name !== 'Pikachu' && props.name !== 'Raichu' && props.name !== 'Clefairy' && props.name !== 'Clefable' && props.name !== 'Jigglypuff' && props.name !== 'Wigglytuff' && props.name !== 'Electabuzz' && props.name !== 'Magmar' && props.name !== 'Hitmonchan' && props.name !== 'Hitmonlee'){
             let speciesSplit = chain.data.chain.species.url.split('/'),
             firstPokemonId = speciesSplit[speciesSplit.length - 2],
             firstPokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${firstPokemonId}`);
@@ -35,7 +35,7 @@ const Evolution = props => {
                 species.data.evolution = props.strWorks.removeHyphen(evolution_details[0].item.name);
                 chainData.push(species.data)
             }
-        } else if(chain.data.chain.evolves_to.length){
+        } else if(chain.data.chain.evolves_to.length && props.name !== 'Lickitung' && props.name !== 'Scyther' && props.name !== 'Magmar' && props.name !== 'Electabuzz' && props.name !== 'Onix'){
             const {evolves_to} = chain.data.chain,
                   {evolution_details} = evolves_to[0];
 
@@ -45,11 +45,12 @@ const Evolution = props => {
 
             species.data.name = props.strWorks.capitalizeFirst(species.data.name);
 
+            console.log(evolves_to)
             console.log(evolution_details)
 
-            if(evolves_to[0].evolution_details[0].trigger.name === 'level-up'){
+            if(evolution_details[0].trigger.name === 'level-up'){
                 species.data.evolution = `Lvl ${evolution_details[0].min_level}`;
-            } else if(evolves_to[0].evolution_details[0].trigger.name === 'use-item'){
+            } else if(evolution_details[0].trigger.name === 'use-item'){
                 species.data.evolution = evolution_details[0].item.name;
             }
                 
