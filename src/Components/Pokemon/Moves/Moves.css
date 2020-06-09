@@ -1,6 +1,14 @@
 .moves {
     height: calc(50vh - 75px);
     box-sizing: border-box;
+}
+
+.moves h1 {
+    display: none;
+}
+
+.moves-display {
+    height: calc(50vh - 75px);
     padding: 0px 10px;
     overflow-y: scroll;
 }
@@ -18,8 +26,12 @@
         height: 100%;
         background: #7371FC;
         border-radius: 20px;
-        padding: 0 3%;
+        padding: 4%;
         box-shadow: 3px 3px 5px darkgray;
         grid-area: moves;
+    }
+
+    .moves h1 {
+        display: inherit;
     }
 }
