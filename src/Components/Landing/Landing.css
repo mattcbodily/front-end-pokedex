@@ -1,5 +1,5 @@
 .landing {
-    padding: 10px;
+    padding: 15px;
 }
 
 .landing h1 {
@@ -10,6 +10,7 @@
     height: 35px;
     width: 90%;
     box-sizing: border-box;
+    border: 2px solid gray;
     border-radius: 20px;
     margin: 10px 0px;
     padding: 0px 10px;
@@ -35,10 +36,9 @@
     text-decoration: none;
     background: #7371FC;
     color: white;
-    border: 1px solid black;
     border-radius: 15px;
     margin: 7px;
-    box-shadow: 3px 3px 5px #7371FC;
+    box-shadow: 3px 3px 5px darkgray;
     overflow: hidden;
 }
 
@@ -78,4 +78,32 @@
     bottom: -25px;
     right: -20px;
     opacity: .4;
+}
+
+@media(min-width: 750px){
+    .landing-link {
+        height: 225px;
+        width: 200px;
+    }
+
+    .bubble-style {
+        height: 115px;
+        width: 115px;
+        top: -40px;
+        left: -40px;
+    }
+
+    .poke-image {
+        height: 125px;
+    }
+}
+
+@media(min-width: 1000px){
+    .search-input {
+        width: 89%;
+    }
+
+    .landing-link {
+        width: 195px;
+    }
 }

@@ -28,7 +28,7 @@ const Landing = props => {
     }, [])
 
     const filterPokemon = (val) => {
-        const filteredArr = pokemonArr.filter(pokemon => pokemon.name.toLowerCase().includes(val.toLowerCase()));
+        const filteredArr = pokemonArr.filter(pokemon => pokemon.name.toLowerCase().startsWith(val.toLowerCase()));
         setFilteredPokemon(filteredArr);
     }
 
