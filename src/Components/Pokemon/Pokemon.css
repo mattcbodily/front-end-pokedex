@@ -132,13 +132,35 @@
     .pokemon-intro-desktop {
         background: #7371FC;
         box-sizing: border-box;
-        padding: 0px 3%;
+        padding: 8% 4% 4% 4%;
         border-radius: 20px;
         position: relative;
         grid-area: intro;
+        box-shadow: 3px 3px 5px darkgray;
+        overflow: hidden;
     }
 
-    .poke-image {
+    .pokemon-about-image {
+        width: 220px;
+        top: 50%;
+        left: 50%;
+        margin-top: -65px;
+        margin-left: -110px;
+    }
 
+    .square-style {
+        position: absolute;
+        top: -70px;
+        left: -70px;
+    }
+
+    .dots {
+        position: absolute;
+    }
+
+    .poke-icon {
+        position: absolute;
+        top: 60%;
+        right: -40px;
     }
 }

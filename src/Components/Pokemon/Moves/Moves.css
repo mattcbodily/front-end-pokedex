@@ -19,7 +19,7 @@
         background: #7371FC;
         border-radius: 20px;
         padding: 0 3%;
-        box-sizing: content-box;
+        box-shadow: 3px 3px 5px darkgray;
         grid-area: moves;
     }
 }
