@@ -71,6 +71,9 @@ const Pokemon = props => {
                             <div key={i} className={'pokemon-intro-type'}>{type}</div>
                         ))}
                     </div>
+                    {/* <div className='square-style'></div>
+                    <img src={dots} alt='dots' className='dots'/>
+                    <img src={pokeball} alt='Pokeball Icon' className='poke-icon'/> */}
                     <img src={pokemon.sprites?.front_default} alt={pokemon.name} className='pokemon-about-image'/>
                 </section>
                 <About height={pokemon.height} weight={pokemon.weight} pokeId={pokemon.id} />
