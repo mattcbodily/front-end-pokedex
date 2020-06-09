@@ -1,6 +1,9 @@
 .about {
     height: calc(50vh - 75px);
     padding: 0px 3%;
+}
+
+.about-flex {
     display: flex;
     flex-direction: column;
 }
@@ -10,7 +13,7 @@
 }
 
 .height-weight {
-    height: 60px;
+    min-height: 60px;
     width: 92%;
     box-sizing: border-box;
     padding: 0px 20px;
@@ -21,6 +24,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .height-weight p {
@@ -38,12 +42,23 @@
         height: 100%;
         background: #7371FC;
         box-sizing: border-box;
+        padding: 4%;
         border-radius: 20px;
         box-shadow: 3px 3px 5px darkgray;
         grid-area: about;
+        font-size: 18px;
+    }
+    
+    .about-flex {
+        height: 70%;
+        justify-content: center;
     }
 
     .height-weight {
         color: black;
+    }
+
+    .height-weight section {
+        margin: 1% 0px;
     }
 }

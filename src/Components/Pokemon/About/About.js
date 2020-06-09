@@ -46,7 +46,7 @@ export default props => {
     }
 
     useEffect(() => {
-        if(props.pokeId){
+        if (props.pokeId) {
             getInfo();
             getHeight();
             getWeight();
@@ -55,15 +55,18 @@ export default props => {
 
     return (
         <div className='about'>
-            <p>{aboutInfo}</p>
-            <section className='height-weight'>
-                <section>
-                    <p className='size-prompt'>Height</p>
-                    <p>{height} ({metricHeight})</p>
-                </section>
-                <section>
-                    <p className='size-prompt'>Weight</p>
-                    <p>{weight}lbs ({metricWeight}kg)</p>
+            <h1>About</h1>
+            <section className='about-flex'>
+                <p>{aboutInfo}</p>
+                <section className='height-weight'>
+                    <section>
+                        <p className='size-prompt'>Height</p>
+                        <p>{height} ({metricHeight})</p>
+                    </section>
+                    <section>
+                        <p className='size-prompt'>Weight</p>
+                        <p>{weight}lbs ({metricWeight}kg)</p>
+                    </section>
                 </section>
             </section>
         </div>
