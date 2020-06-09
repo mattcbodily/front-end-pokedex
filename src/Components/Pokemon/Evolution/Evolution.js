@@ -8,11 +8,11 @@ const Evolution = props => {
     let [evolutionChain, setEvolutionChain] = useState([]);
 
     const getEvolutionChain = async() => {
-        const {id} = props.match.params,
+        const {pokeId} = props,
               preEvolutions = ['Pikachu', 'Raichu', 'Clefairy', 'Clefable', 'Jigglypuff', 'Wigglytuff', 'Electabuzz', 'Magmar', 'Hitmonchan', 'Hitmonlee', 'Snorlax', 'Mr Mime'],
               postEvolutions = ['Lickitung', 'Scyther', 'Onix', 'Magmar', 'Electabuzz', 'Tangela', 'Magnemite', 'Magneton', 'Horsea', 'Seadra', 'Rhyhorn', 'Rhydon'],
               showNoLvl = ['Pikachu', 'Clefairy', 'Jigglypuff', 'Electabuzz', 'Magmar', 'Magneton', 'Snorlax', 'Mr Mime'],
-              pokeSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
+              pokeSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokeId}`);
 
         let chain = await axios.get(pokeSpecies.data.evolution_chain.url),
             chainData = [];

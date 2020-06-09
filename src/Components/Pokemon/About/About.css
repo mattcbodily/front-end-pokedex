@@ -32,3 +32,12 @@
     color: gray;
     font-weight: bold;
 }
+
+@media(min-width: 700px){
+    .about {
+        height: 30vh;
+        width: 30vw;
+        background: snow;
+        border-radius: 20px;
+    }
+}

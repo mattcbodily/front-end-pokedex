@@ -38,18 +38,23 @@ export default props => {
     }
 
     const getInfo = async () => {
-        const { id } = props.match.params;
-        let flavorText = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`),
+        const { pokeId } = props;
+        let flavorText = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokeId}`),
             enFlavorText = flavorText.data.flavor_text_entries.filter((text, i) => text.language.name === 'en');
 
         setAboutInfo(enFlavorText[0].flavor_text);
     }
 
     useEffect(() => {
-        getInfo();
-        getHeight();
-        getWeight();
+        if(props.pokeId){
+            getInfo();
+            getHeight();
+            getWeight();
+        }
     }, [props])
+
+    console.log(height)
+    console.log(weight)
 
 
 

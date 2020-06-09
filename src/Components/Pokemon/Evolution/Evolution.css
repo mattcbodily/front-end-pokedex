@@ -25,6 +25,15 @@
 .evolution-arrow {
     height: 15px;
     position: absolute;
-    top: 40%;
-    right: -50px;
+    top: 35%;
+    right: -60%;
+}
+
+@media(min-width: 700px){
+    .evolution {
+        height: 30vh;
+        width: 60vw;
+        background: snow;
+        border-radius: 20px;
+    }
 }
