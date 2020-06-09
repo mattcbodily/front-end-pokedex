@@ -36,12 +36,15 @@ const Stats = props => {
 
     return (
         <div className='stats'>
-            {formattedStats?.map((stat, i) => (
-                <section key={i} className='stat-container'>
-                    <p>{stat.name}</p>
-                    <p>{stat.stat}</p>
-                </section>
-            ))}
+            <h1>Stats</h1>
+            <div className='stats-display'>
+                {formattedStats?.map((stat, i) => (
+                    <section key={i} className='stat-container'>
+                        <p>{stat.name}</p>
+                        <p>{stat.stat}</p>
+                    </section>
+                ))}
+            </div>
         </div>
     )
 }
