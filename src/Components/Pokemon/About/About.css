@@ -3,6 +3,10 @@
     padding: 0px 3%;
 }
 
+.about h1 {
+    display: none;
+}
+
 .about-flex {
     display: flex;
     flex-direction: column;
@@ -47,6 +51,10 @@
         box-shadow: 3px 3px 5px darkgray;
         grid-area: about;
         font-size: 18px;
+    }
+
+    .about h1 {
+        display: inherit;
     }
     
     .about-flex {

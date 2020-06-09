@@ -1,6 +1,13 @@
 .evolution {
     box-sizing: border-box;
     padding: 20px 15px 0px 15px;
+}
+
+.evolution h1 {
+    display: none;
+}
+
+.evolution-flex {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -24,9 +31,6 @@
 
 .evolution-arrow {
     height: 15px;
-    position: absolute;
-    top: 35%;
-    right: -60%;
 }
 
 @media(min-width: 700px){
@@ -34,7 +38,24 @@
         height: 100%;
         background: #7371FC;
         border-radius: 20px;
+        padding: 2%;
         box-shadow: 3px 3px 5px darkgray;
         grid-area: evolution;
+    }
+
+    .evolution h1 {
+        display: inherit;
+    }
+
+    .evolution-flex {
+        padding: 0px 5%;
+    }
+
+    .evolution img {
+        width: 125px;
+    }
+
+    .evolution-arrow {
+        height: 25px;
     }
 }
