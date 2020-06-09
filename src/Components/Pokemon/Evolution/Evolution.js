@@ -9,12 +9,15 @@ const Evolution = props => {
 
     const getEvolutionChain = async() => {
         const {id} = props.match.params,
-              preEvolutions = ['Pikachu', 'Raichu', 'Clefairy', 'Clefable', 'Jigglypuff', 'Wigglytuff', 'Electabuzz', 'Magmar', 'Hitmonchan', 'Hitmonlee'],
-              postEvolutions = ['Lickitung', 'Scyther', 'Onix', 'Magmar', 'Electabuzz', 'Tangela', 'Magnemite', 'Magneton', 'Horsea', 'Seadra'],
+              preEvolutions = ['Pikachu', 'Raichu', 'Clefairy', 'Clefable', 'Jigglypuff', 'Wigglytuff', 'Electabuzz', 'Magmar', 'Hitmonchan', 'Hitmonlee', 'Snorlax', 'Mr Mime'],
+              postEvolutions = ['Lickitung', 'Scyther', 'Onix', 'Magmar', 'Electabuzz', 'Tangela', 'Magnemite', 'Magneton', 'Horsea', 'Seadra', 'Rhyhorn', 'Rhydon'],
+              showNoLvl = ['Pikachu', 'Clefairy', 'Jigglypuff', 'Electabuzz', 'Magmar', 'Magneton', 'Snorlax', 'Mr Mime'],
               pokeSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
 
         let chain = await axios.get(pokeSpecies.data.evolution_chain.url),
             chainData = [];
+
+        
             
         if(!preEvolutions.includes(props.name)){
             let speciesSplit = chain.data.chain.species.url.split('/'),
@@ -38,7 +41,7 @@ const Evolution = props => {
                 species.data.evolution = props.strWorks.removeHyphen(evolution_details[0].item.name);
                 chainData.push(species.data)
             }
-        } else if(chain.data.chain.evolves_to.length && !postEvolutions.includes(props.name)){
+        } else if(chain.data.chain.evolves_to.length && props.name !== 'Lickitung'){
             const {evolves_to} = chain.data.chain,
                   {evolution_details} = evolves_to[0];
 
@@ -46,9 +49,14 @@ const Evolution = props => {
                 pokeId = splitStr[splitStr.length - 2],
                 species = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeId}`);
 
-            species.data.name = props.strWorks.capitalizeFirst(species.data.name);
 
-            if(evolution_details[0].trigger.name === 'level-up' && props.name !== 'Pikachu' && props.name !== 'Clefairy' && props.name !== 'Jigglypuff'){
+            if(species.data.name === 'mr-mime'){
+                species.data.name = props.strWorks.removeHyphen(species.data.name);
+            } else {
+                species.data.name = props.strWorks.capitalizeFirst(species.data.name);
+            }
+
+            if(evolution_details[0].trigger.name === 'level-up' && !showNoLvl.includes(props.name)){
                 species.data.evolution = `Lvl ${evolution_details[0].min_level}`;
             } else if(evolution_details[0].trigger.name === 'use-item'){
                 species.data.evolution = props.strWorks.removeHyphen(evolution_details[0].item.name);
@@ -57,7 +65,7 @@ const Evolution = props => {
             }
                 
             chainData.push(species.data);
-            if(evolves_to[0].evolves_to.length){
+            if(evolves_to[0].evolves_to.length && !postEvolutions.includes(props.name)){
                 let splitStrTwo = evolves_to[0].evolves_to[0].species.url.split('/'),
                     pokeIdTwo = splitStrTwo[splitStrTwo.length - 2],
                     speciesTwo = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeIdTwo}`);

@@ -18,7 +18,12 @@ const Pokemon = props => {
         const {id} = props.match.params;
 
         let pokeObj = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-        pokeObj.data.name = props.strWorks.capitalizeFirst(pokeObj.data.name);
+
+        if(pokeObj.data.name === 'mr-mime'){
+            pokeObj.data.name = props.strWorks.removeHyphen(pokeObj.data.name)
+        } else {
+            pokeObj.data.name = props.strWorks.capitalizeFirst(pokeObj.data.name);
+        }
         pokeObj.data.types = pokeObj.data.types.map(element => props.strWorks.capitalizeFirst(element.type.name))
 
         setPokemon(pokeObj.data);
