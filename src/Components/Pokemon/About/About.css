@@ -35,9 +35,9 @@
 
 @media(min-width: 700px){
     .about {
-        height: 30vh;
-        width: 30vw;
         background: snow;
+        box-sizing: border-box;
         border-radius: 20px;
+        grid-area: about;
     }
 }

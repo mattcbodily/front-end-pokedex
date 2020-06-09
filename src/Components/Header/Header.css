@@ -6,3 +6,10 @@
     z-index: 2;
     display: flex;
 }
+
+@media(min-width: 700px){
+    .header-flex{
+        position: fixed;
+        top: 0px;
+    }
+}

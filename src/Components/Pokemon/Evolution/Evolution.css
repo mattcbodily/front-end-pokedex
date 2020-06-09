@@ -31,9 +31,8 @@
 
 @media(min-width: 700px){
     .evolution {
-        height: 30vh;
-        width: 60vw;
         background: snow;
         border-radius: 20px;
+        grid-area: evolution;
     }
 }

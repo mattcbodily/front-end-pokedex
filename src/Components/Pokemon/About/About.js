@@ -53,11 +53,6 @@ export default props => {
         }
     }, [props])
 
-    console.log(height)
-    console.log(weight)
-
-
-
     return (
         <div className='about'>
             <p>{aboutInfo}</p>

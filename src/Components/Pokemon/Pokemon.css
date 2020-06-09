@@ -116,17 +116,25 @@
     }
 
     .landing-desktop {
-        display: initial;
-        /* padding: 20px; */
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 1fr 3vw 1fr 3vw 1fr;
+        grid-template-rows: 1fr 3vh 1fr;
+        grid-template-areas: 
+            "intro . stats . moves"
+            ". . . . ."
+            "about . evolution evolution evolution";
+        justify-self: center;
+        padding: 20px;
     }
 
     .pokemon-intro-desktop {
-        height: 30vh;
-        width: 30vw;
         background: snow;
+        box-sizing: border-box;
         padding: 0px 3%;
         border-radius: 20px;
         position: relative;
+        grid-area: intro;
     }
 
     .poke-image {

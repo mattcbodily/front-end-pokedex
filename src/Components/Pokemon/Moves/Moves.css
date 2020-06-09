@@ -15,11 +15,10 @@
 
 @media(min-width: 700px){
     .moves {
-        height: 30vh;
-        width: 30vw;
         background: snow;
         border-radius: 20px;
         padding: 0 3%;
         box-sizing: content-box;
+        grid-area: moves;
     }
 }

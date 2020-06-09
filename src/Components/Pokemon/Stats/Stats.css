@@ -15,9 +15,8 @@
 
 @media(min-width: 700px){
     .stats {
-        height: 30vh;
-        width: 30vh;
         background: snow;
         border-radius: 20px;
+        grid-area: stats;
     }
 }
