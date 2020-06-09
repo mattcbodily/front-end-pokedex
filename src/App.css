@@ -14,6 +14,10 @@ div::-webkit-scrollbar {
   display: none;
 }
 
-div {
+section::-webkit-scrollbar {
+  display: none;
+}
+
+div, section {
   -ms-overflow-style: none;
 }

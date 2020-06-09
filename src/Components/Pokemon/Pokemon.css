@@ -118,8 +118,8 @@
     .landing-desktop {
         box-sizing: border-box;
         display: grid;
-        grid-template-columns: 1fr 3vw 1fr 3vw 1fr;
-        grid-template-rows: 25px 1fr 3vh 1fr;
+        grid-template-columns: 1fr 2vw 1fr 2vw 1fr;
+        grid-template-rows: 25px 1fr 2vh 1fr;
         grid-template-areas:
             ". . . . ." 
             "intro . stats . moves"

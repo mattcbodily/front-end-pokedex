@@ -27,5 +27,6 @@
         box-shadow: 3px 3px 5px darkgray;
         grid-area: stats;
         overflow: hidden;
+        font-size: 18px;
     }
 }

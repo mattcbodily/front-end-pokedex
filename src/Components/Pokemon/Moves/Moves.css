@@ -29,6 +29,11 @@
         padding: 4%;
         box-shadow: 3px 3px 5px darkgray;
         grid-area: moves;
+        font-size: 18px;
+    }
+
+    .moves-display {
+        height: 35vh;
     }
 
     .moves h1 {

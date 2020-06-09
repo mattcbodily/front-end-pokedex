@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import stringWorks from '../../../HOCs/stringWorks';
-import evolutionArrow from '../../../assets/evolution_arrow.svg';
 import './Evolution.css';
 
 const Evolution = props => {
@@ -97,7 +96,6 @@ const Evolution = props => {
             <h1>Evolution</h1>
             <section className='evolution-flex'>
                 {evolutionChain.map((pokemon, i, arr) => (
-                    <>
                     <div key={i} className='poke-evolution'>
                         <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                         <p>{pokemon.name}</p>
@@ -105,10 +103,6 @@ const Evolution = props => {
                             ? <p>{pokemon.evolution}</p>
                             : null}
                     </div>
-                    {i < arr.length - 1
-                        ? <img src={evolutionArrow} alt='Arrow' className='evolution-arrow' />
-                        : null}
-                    </>
                 ))}
             </section>
         </div>

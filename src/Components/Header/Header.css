@@ -7,9 +7,22 @@
     display: flex;
 }
 
+.desktop-arrow {
+    display: none;
+}
+
 @media(min-width: 700px){
     .header-flex{
         position: fixed;
         top: 0px;
+        padding: 10px 20px;
+    }
+
+    .mobile-arrow {
+        display: none;
+    }
+
+    .desktop-arrow {
+        display: initial;
     }
 }
