@@ -32,8 +32,6 @@ const Pokemon = props => {
         getPokemon();
     }, [])
 
-    console.log(pokemon)
-
     return (
         <div className='pokemon'>
             <Header />
