@@ -42,6 +42,10 @@
     overflow: hidden;
 }
 
+.landing-link:hover {
+    background: #9C9AFF;
+}
+
 .bubble-style {
     height: 85px;
     width: 85px;
